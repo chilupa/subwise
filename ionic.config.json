@@ -1,0 +1,7 @@
+{
+  "name": "subscription-tracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
