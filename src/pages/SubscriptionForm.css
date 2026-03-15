@@ -1,0 +1,58 @@
+.subscription-form-container {
+  padding: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.subscription-form-container ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Billing cycle: label + radio group aligned with other form fields */
+.billing-cycle-field {
+  margin-bottom: 1rem;
+}
+
+.billing-cycle-field .billing-cycle-label {
+  display: block;
+  font-size: 12px;
+  color: var(--ion-color-step-550);
+  margin-bottom: 4px;
+  transform: translateY(2px);
+}
+
+.billing-cycle-field ion-radio-group {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ion-color-step-250);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.billing-cycle-field .radio-option {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --min-height: 48px;
+  margin: 0;
+}
+
+.billing-cycle-field .radio-option:not(:last-child) {
+  border-bottom: 1px solid var(--ion-color-step-250);
+}
+
+.save-button {
+  margin-top: 2rem;
+}
+
+.delete-button {
+  margin-top: 1rem;
+}
+
+.form-error {
+  color: var(--ion-color-danger);
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,76 @@
+.dashboard-summary {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+}
+
+.summary-label {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.summary-amount {
+  margin: 0.25rem 0 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--ion-color-medium);
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+.empty-hint {
+  margin-top: 0.5rem !important;
+  font-size: 0.9rem;
+}
+
+.monthly-equiv {
+  font-size: 0.85em;
+  opacity: 0.85;
+}
+
+/* Category chips – soft, muted colors */
+.chip-category {
+  --background: var(--ion-color-step-200);
+  --color: var(--ion-color-step-700);
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.chip-streaming {
+  --background: #f8e0eb;
+  --color: #9e4d6a;
+}
+
+.chip-software {
+  --background: #e3f2fd;
+  --color: #4a6fa3;
+}
+
+.chip-cloud {
+  --background: #e0f7fa;
+  --color: #4a7d8a;
+}
+
+.chip-gaming {
+  --background: #f3e5f5;
+  --color: #6a4a7a;
+}
+
+.chip-music {
+  --background: #fff3e0;
+  --color: #a67a4a;
+}
+
+.chip-other {
+  --background: #eceff1;
+  --color: #546e7a;
+}
