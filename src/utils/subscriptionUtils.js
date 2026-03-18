@@ -35,10 +35,10 @@ export function sortByNextBillingDate(subscriptions) {
   );
 }
 
-export function formatCurrency(amount) {
+export function formatCurrency(amount, currency = 'USD') {
   return new Intl.NumberFormat(undefined, {
     style: 'currency',
-    currency: 'USD',
+    currency,
     minimumFractionDigits: 2,
   }).format(amount);
 }

@@ -1,17 +1,26 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { getSubscriptions, setSubscriptions as saveSubscriptions, getSettings, setSettings as saveSettings, getNextNotificationIds } from '../services/storage';
+import { getSubscriptions, setSubscriptions as saveSubscriptions, getSettings, setSettings as saveSettings, getNextNotificationIds, setNotificationIdCounter } from '../services/storage';
+import { MOCK_SUBSCRIPTIONS, MOCK_COUNT } from '../data/mockSubscriptions';
 import { scheduleReminders, cancelReminders, requestNotificationPermissions } from '../services/notifications';
+
+const USE_MOCK_WHEN_EMPTY = import.meta.env.VITE_USE_MOCK_DATA === 'true';
 
 const SubscriptionsContext = createContext(null);
 
 export function SubscriptionsProvider({ children }) {
   const [subscriptions, setSubscriptionsState] = useState([]);
-  const [settings, setSettingsState] = useState({ notificationsEnabled: true });
+  const [settings, setSettingsState] = useState({ notificationsEnabled: true, currency: 'USD' });
   const [loaded, setLoaded] = useState(false);
 
   const load = useCallback(async () => {
     const [subs, sets] = await Promise.all([getSubscriptions(), getSettings()]);
-    setSubscriptionsState(subs);
+    let subscriptionsToShow = subs;
+    if (subs.length === 0 && USE_MOCK_WHEN_EMPTY) {
+      await saveSubscriptions(MOCK_SUBSCRIPTIONS);
+      await setNotificationIdCounter(MOCK_COUNT * 2);
+      subscriptionsToShow = MOCK_SUBSCRIPTIONS;
+    }
+    setSubscriptionsState(subscriptionsToShow);
     setSettingsState(sets);
     setLoaded(true);
   }, []);

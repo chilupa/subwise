@@ -28,7 +28,8 @@ export async function setSubscriptions(subscriptions) {
 export async function getSettings() {
   const storage = await getStorage();
   const data = await storage.get(SETTINGS_KEY);
-  return data || { notificationsEnabled: true };
+  const defaults = { notificationsEnabled: true, currency: 'USD' };
+  return data ? { ...defaults, ...data } : defaults;
 }
 
 export async function setSettings(settings) {
@@ -44,4 +45,9 @@ export async function getNextNotificationIds() {
   const id1Day = counter + 1;
   await storage.set(NOTIFICATION_ID_COUNTER_KEY, counter + 2);
   return { id3Day, id1Day };
+}
+
+export async function setNotificationIdCounter(value) {
+  const storage = await getStorage();
+  await storage.set(NOTIFICATION_ID_COUNTER_KEY, value);
 }

@@ -22,7 +22,8 @@ import Header from '../components/Header';
 
 export default function Dashboard() {
   const history = useHistory();
-  const { subscriptions, loaded } = useSubscriptions();
+  const { subscriptions, loaded, settings } = useSubscriptions();
+  const currency = settings.currency || 'USD';
   const sorted = sortByNextBillingDate(subscriptions);
   const total = totalMonthlyCost(subscriptions);
 
@@ -32,7 +33,7 @@ export default function Dashboard() {
       <IonContent fullscreen>
         <div className="dashboard-summary">
           <p className="summary-label">Total monthly cost</p>
-          <p className="summary-amount">{formatCurrency(total)}</p>
+          <p className="summary-amount">{formatCurrency(total, currency)}</p>
         </div>
 
         {loaded && (
@@ -53,10 +54,10 @@ export default function Dashboard() {
                     <IonLabel>
                       <h2>{sub.name}</h2>
                       <p>
-                        {formatCurrency(parseFloat(sub.price) || 0)} / {sub.billingCycle === 'yearly' ? 'year' : 'month'}
+                        {formatCurrency(parseFloat(sub.price) || 0, currency)} / {sub.billingCycle === 'yearly' ? 'year' : 'month'}
                         {sub.billingCycle === 'yearly' && (
                           <span className="monthly-equiv">
-                            {' '}({formatCurrency(monthlyEquivalent(sub))}/mo)
+                            {' '}({formatCurrency(monthlyEquivalent(sub), currency)}/mo)
                           </span>
                         )}
                       </p>

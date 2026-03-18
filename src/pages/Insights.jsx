@@ -16,7 +16,8 @@ import './Insights.css';
 import Header from '../components/Header';
 
 export default function Insights() {
-  const { subscriptions, loaded } = useSubscriptions();
+  const { subscriptions, loaded, settings } = useSubscriptions();
+  const currency = settings.currency || 'USD';
   const total = totalMonthlyCost(subscriptions);
   const byCategory = spendingByCategory(subscriptions);
 
@@ -28,10 +29,10 @@ export default function Insights() {
           <>
             <div className="insights-summary">
               <p className="summary-label">Total monthly</p>
-              <p className="summary-amount">{formatCurrency(total)}</p>
+              <p className="summary-amount">{formatCurrency(total, currency)}</p>
               {total > 0 && (
                 <p className="summary-yearly">
-                  ~{formatCurrency(total * 12)} / year
+                  ~{formatCurrency(total * 12, currency)} / year
                 </p>
               )}
             </div>
@@ -55,7 +56,7 @@ export default function Insights() {
                               {category}
                             </span>
                             <span className="insight-amount">
-                              {formatCurrency(amount)}
+                              {formatCurrency(amount, currency)}
                               {count > 1 && (
                                 <span className="insight-count"> · {count} subs</span>
                               )}

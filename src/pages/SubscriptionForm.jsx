@@ -116,7 +116,7 @@ export default function SubscriptionForm() {
             <IonButtons slot="start">
               <IonBackButton defaultHref="/dashboard" />
             </IonButtons>
-            <IonTitle>Edit Subscription</IonTitle>
+            <IonTitle slot="start">Edit Subscription</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
@@ -133,7 +133,7 @@ export default function SubscriptionForm() {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/dashboard" />
           </IonButtons>
-          <IonTitle>{isEditMode ? 'Edit' : 'Add'} Subscription</IonTitle>
+          <IonTitle slot="start">{isEditMode ? 'Edit' : 'Add'} Subscription</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -185,8 +185,8 @@ export default function SubscriptionForm() {
           </IonItem>
 
           <IonItem>
-            <IonLabel position="stacked">Category (optional)</IonLabel>
             <IonSelect
+              label="Category (optional)" labelPlacement="stacked"
               value={category}
               placeholder="Select category"
               onIonChange={(e) => setCategory(e.detail.value)}

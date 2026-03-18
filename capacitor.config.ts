@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.subtrack.app',
-  appName: 'SubTrack',
+  appId: 'io.subwise.app',
+  appName: 'subwise',
   webDir: 'dist'
 };
 
